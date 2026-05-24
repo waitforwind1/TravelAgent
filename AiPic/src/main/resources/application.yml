@@ -1,11 +1,11 @@
 spring:
   main:
-    web-application-type: servlet
+    web-application-type: none
     banner-mode: off
   application:
     name: AIPic
   profiles:
-    active: sse
+    active: stdio
 
 server:
   port: 18173
