@@ -60,6 +60,14 @@ function handleStreamData(
   onToken(data)
 }
 
+function parseStreamEvent(chunk: string) {
+  return chunk
+    .split(/\r?\n/)
+    .filter((line) => line.startsWith('data:'))
+    .map((line) => line.replace(/^data: ?/, ''))
+    .join('\n')
+}
+
 export async function streamPlan(
   body: TravelPlanRequest,
   onToken: (token: string) => void,
@@ -97,19 +105,11 @@ export async function streamPlan(
     buffer = chunks.pop() || ''
 
     for (const chunk of chunks) {
-      const lines = chunk.split(/\n/)
-      for (const line of lines) {
-        if (!line.startsWith('data:')) continue
-        handleStreamData(line.slice(5), onToken, onConversationId)
-      }
+      handleStreamData(parseStreamEvent(chunk), onToken, onConversationId)
     }
   }
 
   if (buffer.trim()) {
-    for (const line of buffer.split(/\n/)) {
-      if (line.startsWith('data:')) {
-        handleStreamData(line.slice(5), onToken, onConversationId)
-      }
-    }
+    handleStreamData(parseStreamEvent(buffer), onToken, onConversationId)
   }
 }

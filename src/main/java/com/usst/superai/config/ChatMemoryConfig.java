@@ -41,16 +41,6 @@ public class ChatMemoryConfig {
                 .build();
     }
 
-//    @Autowired
-//    private ChatMemoryRepository chatMemoryRepository;
-
-//    @Bean
-//    public ChatMemory inChatMemory(){
-//        return MessageWindowChatMemory.builder()
-//                .chatMemoryRepository(new InMemoryChatMemoryRepository())
-//                .maxMessages(20)
-//                .build();
-//    }
 
 
 }

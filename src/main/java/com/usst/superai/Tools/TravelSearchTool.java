@@ -37,7 +37,7 @@ public class TravelSearchTool {
 
             Document document = Jsoup.connect(url)
                     .userAgent("Mozilla/5.0")
-                    .timeout(100000)
+                    .timeout(10000)
                     .get();
 
             for (Element element : document.select("div.result, div.c-container")) {

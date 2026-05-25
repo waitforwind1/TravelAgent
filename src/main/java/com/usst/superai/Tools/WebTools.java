@@ -8,7 +8,7 @@ import org.springframework.util.StringUtils;
 
 public class WebTools {
 
-    private static final int TIMEOUT_MS = 100000;
+    private static final int TIMEOUT_MS = 10000;
     private static final int MAX_TEXT_LENGTH = 3000;
 
     @Tool(description = "读取网页正文文本，适合获取网页中的旅游攻略、地点介绍、注意事项等公开信息")
