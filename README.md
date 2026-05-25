@@ -1,1 +1,1 @@
-本项目是基于 Spring Boot + Spring AI 构建的智能旅行规划平台，集成 DeepSeek/DashScope 大模型、RAG 向量检索、ChatMemory、MCP、多轮对话、SSE 流式响应、Tool Calling、本地文件读写与 Markdown 导出下载。系统内置 ReAct 智能体，支持任务推理、 工具调度、多步执行与状态管理，可结合知识库、天气、搜索等工具生成个性化旅行方案。
+本项目是基于 Spring Boot + Spring AI + Vue 构建的智能旅行规划平台，集成 DeepSeek/DashScope 大模型、RAG 向量检索、ChatMemory、MCP、多轮对话、SSE 流式响应、Tool Calling、本地文件读写与 Markdown 导出下载。系统内置 ReAct 智能体，支持任务推理、 工具调度、多步执行与状态管理，可结合知识库、天气、搜索等工具生成个性化旅行方案。
