@@ -25,7 +25,7 @@ public class ChatClientConfig {
     @Resource
     private ChatMemory jdbcChatMemory;
 
-    @Autowired
+    @Resource
     private ChatMemory inChatMemory;
 
     @Bean

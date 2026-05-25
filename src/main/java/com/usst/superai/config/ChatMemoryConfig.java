@@ -7,6 +7,7 @@ import org.springframework.ai.chat.memory.InMemoryChatMemoryRepository;
 import org.springframework.ai.chat.memory.MessageWindowChatMemory;
 import org.springframework.ai.chat.memory.repository.jdbc.JdbcChatMemoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -16,8 +17,11 @@ public class ChatMemoryConfig {
     @Autowired
     private JdbcChatMemoryRepository jdbcChatMemoryRepository;
 
-    @Autowired
-    private ChatMemoryRepository chatMemoryRepository;
+
+    @Bean
+    public ChatMemoryRepository inMemoryChatMemoryRepository() {
+        return new InMemoryChatMemoryRepository();
+    }
 
     @Bean
     public ChatMemory jdbcChatMemory(){
@@ -26,13 +30,27 @@ public class ChatMemoryConfig {
                 .maxMessages(10)
                 .build();
     }
+
+
     @Bean
-    public ChatMemory inChatMemory(){
+    public ChatMemory inChatMemory(
+            @Qualifier("inMemoryChatMemoryRepository") ChatMemoryRepository repository) {
         return MessageWindowChatMemory.builder()
-                .chatMemoryRepository(chatMemoryRepository)
+                .chatMemoryRepository(repository)
                 .maxMessages(20)
                 .build();
     }
+
+//    @Autowired
+//    private ChatMemoryRepository chatMemoryRepository;
+
+//    @Bean
+//    public ChatMemory inChatMemory(){
+//        return MessageWindowChatMemory.builder()
+//                .chatMemoryRepository(new InMemoryChatMemoryRepository())
+//                .maxMessages(20)
+//                .build();
+//    }
 
 
 }

@@ -50,6 +50,7 @@ public class TravelPlanServiceImpl implements TravelPlanService {
 
     @Value("${app.filedir}")
     private String exportDir;
+
     @Autowired
     private VectorStore simpleVectorStore;
 
