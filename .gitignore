@@ -1,8 +1,8 @@
 ### CUSTOM ###
 application-local.yml
 mcp-services.json
-
-
+tmp/files/*
+src/main/resources/tmp/*
 
 HELP.md
 target/
